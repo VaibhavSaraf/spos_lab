@@ -7,14 +7,6 @@ class FCFS {
 		int n = sc.nextInt();
 		Process []process = new Process[n];
 
-		/*//System.out.println(n);
-		int processes[];
-		int burst_time[];
-		int arrival_time[];
-		processes = new int [n];
-		burst_time = new int [n];
-		arrival_time = new int [n];*/
-
 		for(int i=0;i<n;i++){
 			System.out.print("Arrival time of P"+(i+1)+" :");
 			int arrival_time = sc.nextInt();
@@ -23,11 +15,26 @@ class FCFS {
 			process[i] = new Process("P"+(i+1),burst_time,arrival_time);
 		}
 		
+		Arrays.sort(process,new SortByArrival());
 
-		/*for(int i=0;i<n;i++){
-			System.out.println(arrival_time[i]);
-			System.out.println(burst_time[i]);
-		}*/
+		int sum=0;
+		double avg_wait_time=0,avg_turn_around_time= 0;
+		System.out.println("\n\nPRNo\tBT\tAT\tCT\tTAT\tWT");
+		System.out.println("==================================================");
+		for(int i=0;i<n;i++)
+		{
+			sum=process[i].CT = sum + process[i].BT;
+			process[i].TAT = process[i].CT - process[i].AT;
+			process[i].WT = process[i].TAT - process[i].BT;
 
+			avg_wait_time = avg_wait_time + process[i].WT;
+			avg_turn_around_time = avg_turn_around_time + process[i].TAT;
+
+			process[i].display();
+		}
+		avg_wait_time = (double)avg_wait_time/n;
+		avg_turn_around_time = (double)avg_turn_around_time/n;
+		System.out.println("Average Waiting Time " + avg_wait_time);
+		System.out.println("Average Turn around Time " + avg_turn_around_time);
 	}
 }
