@@ -34,11 +34,13 @@ public class PassOne {
 			// If symbol is present in label field, make its entry in SYMTAB
 			if (!parts[0].isEmpty()) {
 				if (SYMTAB.containsKey(parts[0])) {
+
 					if (SYMTAB.get(parts[0]).getAddress() == -1) {
 						SYMTAB.put(parts[0], SYMTAB.get(parts[0]).setAddress(LC));
 					} else {
 						System.err.println("Same symbol declared multiple times");
 					}
+
 				} else {
 					SYMTAB.put(parts[0], new OperandEntry(parts[0], LC, symtab_ptr++));
 				}

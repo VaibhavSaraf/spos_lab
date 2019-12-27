@@ -1,5 +1,3 @@
-//package com.kshitijpatil;
-
 public class OperandEntry {
 	private String literal;
 	private int address;
