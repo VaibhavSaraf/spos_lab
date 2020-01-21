@@ -5,6 +5,7 @@ ADD	&A, ='1'
 MOVER	&B, &Y
 ADD	&B, ='5'
 MEND
+
 MACRO
 M2	&P, &Q, &U=CREG, &V=DREG
 MOVER	&U, &P
@@ -15,4 +16,4 @@ MEND
 START	100
 M1	10, 20, &B=CREG
 M2	100, 200, &V=AREG, &U=BREG
-END
+END 
